@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,9 @@ namespace OOexcercises
 
             Console.WriteLine("Uit te voeren oefening?" +
              "\n1. H10-Clock" +
-             "\n2. H10_Birthday");
+             "\n2. H10_Birthday" +
+             "\n3. H10_DayOfTheWeek" +
+             "\n4. H10_TicksSince2000");
             int userInput = Convert.ToInt32(Console.ReadLine());
 
             switch (userInput)
@@ -23,6 +26,12 @@ namespace OOexcercises
                     break;
                 case 2:
                     H10_Birthday();
+                    break;
+                case 3:
+                    H10_DayOfTheWeek();
+                    break;
+                case 4:
+                    H10_TicksSince2000();
                     break;
                 default:
                     Console.WriteLine("Onbekende keuze");
@@ -49,6 +58,29 @@ namespace OOexcercises
             nextBirtday = nextBirtday.AddYears(1);
             TimeSpan diff = nextBirtday - now;
             Console.WriteLine($"Over {diff.Days} dagen bent u jarig");
+        }
+        public static void H10_DayOfTheWeek()
+        {
+            Console.WriteLine("Welke dag");
+            int day = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Welke maand");
+            int month = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Welke jaar");
+            int year = Convert.ToInt32(Console.ReadLine());
+
+            DateTime dayOfTheWeek = new DateTime(year, month, day);
+            CultureInfo dutch = new CultureInfo("nl-BE");
+            Console.WriteLine($"{dayOfTheWeek.ToString("d")} is een {dayOfTheWeek.ToString("dddd",dutch)}");//Chatgpt
+        }
+        public static void H10_TicksSince2000()
+        {
+            DateTime now = DateTime.Now;
+            DateTime year2000 = new DateTime(2000, 01, 01);
+            TimeSpan diff = now - year2000;
+
+            Console.WriteLine($"Sinds {year2000.ToString("d")} zijn er {diff.Ticks} ticks voorbijgegaan.");
         }
     }
 }
