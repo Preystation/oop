@@ -9,7 +9,20 @@ namespace OOexcercises
         static void Main(string[] args)
         {
 
+            Console.WriteLine("Welkom bij de oefeningen van Objectgeoriënteerd Programmeren!" +
+                "\nTopic van de uit te voeren oefening?" +
+                "\n1. DateTime");
+            int userInput = Convert.ToInt32(Console.ReadLine());
 
+            switch (userInput)
+            {
+                case 1:
+                   DateTimeExcercises.Submenu();
+                        break;
+                default:
+                    Console.WriteLine("Onbekende keuze");
+                    break;
+            }
 
         }
     }
