@@ -17,7 +17,8 @@ namespace OOexcercises
              "\n2. H10_Birthday" +
              "\n3. H10_DayOfTheWeek" +
              "\n4. H10_TicksSince2000" +
-             "\n5. H10_LeapYearCount");
+             "\n5. H10_LeapYearCount" +
+             "\n6. H10_CodeTimin");
             int userInput = Convert.ToInt32(Console.ReadLine());
 
             switch (userInput)
@@ -36,6 +37,9 @@ namespace OOexcercises
                     break;
                 case 5:
                     H10_LeapYearCount();
+                    break;
+                case 6:
+                    H10_CodeTiming();
                     break;
                 default:
                     Console.WriteLine("Onbekende keuze");
@@ -100,6 +104,18 @@ namespace OOexcercises
             }
 
             Console.WriteLine($"Er zijn {yearCounter} schrikeljaren tussen {startYear} en {endYear}");
+        }
+        public static void H10_CodeTiming()
+        {
+            int[] numbers = new int[1000000];
+            DateTime start = DateTime.Now;
+            for(int i = 0;i< numbers.Length; i++)
+            {
+                numbers[i] = i;
+            }
+            DateTime end = DateTime.Now;
+            TimeSpan diff = end - start;
+            Console.WriteLine($"Het duurt {diff.Milliseconds} milliseconden om een array van een miljoen elementen aan te maken en op te vullen met opeenvolgende waarden.");
         }
     }
 }
