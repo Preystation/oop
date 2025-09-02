@@ -16,7 +16,8 @@ namespace OOexcercises
              "\n1. H10-Clock" +
              "\n2. H10_Birthday" +
              "\n3. H10_DayOfTheWeek" +
-             "\n4. H10_TicksSince2000");
+             "\n4. H10_TicksSince2000" +
+             "\n5. H10_LeapYearCount");
             int userInput = Convert.ToInt32(Console.ReadLine());
 
             switch (userInput)
@@ -32,6 +33,9 @@ namespace OOexcercises
                     break;
                 case 4:
                     H10_TicksSince2000();
+                    break;
+                case 5:
+                    H10_LeapYearCount();
                     break;
                 default:
                     Console.WriteLine("Onbekende keuze");
@@ -81,6 +85,21 @@ namespace OOexcercises
             TimeSpan diff = now - year2000;
 
             Console.WriteLine($"Sinds {year2000.ToString("d")} zijn er {diff.Ticks} ticks voorbijgegaan.");
+        }
+        public static void H10_LeapYearCount()
+        {
+            int startYear = 1799;
+            int endYear = 2021;
+            int yearCounter = 0;
+            for(int i = startYear; i < endYear; i++)
+            {
+                if (DateTime.IsLeapYear(i))
+                {
+                    yearCounter++;
+                }
+            }
+
+            Console.WriteLine($"Er zijn {yearCounter} schrikeljaren tussen {startYear} en {endYear}");
         }
     }
 }
