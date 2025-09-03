@@ -1,13 +1,15 @@
-﻿namespace SchoolAdmin
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace SchoolAdmin
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public static void DemoStudents()
         {
             Student s1 = new Student();
             Student s2 = new Student();
-            s1.Name = "Said Aziz";
-            s2.Name = " Mieke Vermeulen";
+            s1.Name = "Said Aziz".Trim();
+            s2.Name = "Mieke Vermeulen".Trim();
             s1.Courses.Add("Programmeren ");
             s1.Courses.Add("Databanken ");
             s2.Courses.Add("Communicatie ");
@@ -15,9 +17,26 @@
             s2.Birthdate = new DateTime(1998, 01, 01);
             s1.StudentCounter++;
             s2.StudentCounter++;
-            Console.WriteLine($"Said: {s1.Name}, geboren {s1.Birthdate.ToString("d")} met studentennummber {s1.StudentCounter}; Said volgt {s1.Courses[0]} en {s1.Courses[1]} ");
-            Console.WriteLine($"Mieke: {s2.Name}, geboren {s2.Birthdate.ToString("d")} met studentennummber {s2.StudentCounter}; Said volgt {s2.Courses[0]}");
-
+            s1.GenerateNameCard();
+            Console.WriteLine(s1.DetermineWorkLoad());
+            s2.GenerateNameCard();
+            Console.WriteLine(s2.DetermineWorkLoad());
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Wat wil je doen?" +
+                "\n1. DemonstreerStudenten uitvoeren");
+            int number = Convert.ToInt32(Console.ReadLine());
+            switch (number)
+            {
+                case 1:
+                    DemoStudents();
+                    break;
+                default:
+                    Console.WriteLine("Onbekende keuze");
+                    break;
+            }
+           
         }
     }
 }
