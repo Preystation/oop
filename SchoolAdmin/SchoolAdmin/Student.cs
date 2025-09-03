@@ -11,14 +11,19 @@ namespace SchoolAdmin
     {
 
         public string Name { get; set; }
-        public DateTime Birthdate { get; set; }
-        public uint StudentNumber { get; set; }
+        public DateTime Birthdate;
+        public uint StudentNumber;
         private List<CourseResult> coursesResult = new List<CourseResult>();
+        public int Age { get {
+                DateTime now = DateTime.Now;
+                int age = now.Year - Birthdate.Year;
+
+                return age; } }
 
         public static uint StudentCounter = 1;
         public void GenerateNameCard()
         {
-            Console.WriteLine($"{Name} (STUDENT)");
+            Console.WriteLine($"{Name} ({Age})");
         }
         public double DetermineWorkLoad()
         {
