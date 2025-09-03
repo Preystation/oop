@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SchoolAdmin
 {
-  
-   public class Student
+
+    public class Student
     {
 
         public string Name { get; set; }
@@ -24,11 +24,11 @@ namespace SchoolAdmin
         {
             return coursesResult.Count * 10;
         }
-        public void RegisterForCourse(string course,double result)
+        public void RegisterForCourse(string course, double result)
         {
             if (result > 20)
             {
-                Console.WriteLine("Ongeldige cijfer cijfer mag niet hoger zijn dan 20.");
+                Console.WriteLine("Ongeldige cijfer, cijfer mag niet hoger zijn dan 20.");
             }
             else
             {
@@ -36,10 +36,32 @@ namespace SchoolAdmin
                 cr.Name = course;
                 cr.Result = result;
                 coursesResult.Add(cr);
-                
+
 
             }
         }
+        public double Average()
+        {
+            double sum = 0;
+            foreach (CourseResult cr in coursesResult)
+            {
+                sum = sum + cr.Result;
+            }
+            return sum / coursesResult.Count;
+        }
+        public void ShowOverview()
+        {
+            Console.WriteLine($"{Name}");
+            Console.WriteLine($"Werkbelasting {DetermineWorkLoad()} uren");
+            Console.WriteLine("Cijferrapport");
+            Console.WriteLine("*************");
+            foreach (CourseResult cr in coursesResult)
+            {
+                Console.WriteLine($"{cr.Name} {cr.Result}");
+            }
+           
+            Console.WriteLine($"Gemiddelde {Average():f02}");
+            Console.WriteLine("");
+        }
     }
-
 }

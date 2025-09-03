@@ -19,11 +19,9 @@ namespace SchoolAdmin
             s2.RegisterForCourse("Webtechnologie", 14); ;
             s1.Birthdate = new DateTime(2000, 06, 01);
             s2.Birthdate = new DateTime(1998, 01, 01);
-      
-            s1.GenerateNameCard();
-            Console.WriteLine(s1.DetermineWorkLoad());
-            s2.GenerateNameCard();
-            Console.WriteLine(s2.DetermineWorkLoad());
+
+            s1.ShowOverview();
+            s2.ShowOverview();
         }
         public static void DemoCourses()
         {
