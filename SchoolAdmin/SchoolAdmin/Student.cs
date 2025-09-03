@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace SchoolAdmin
 {
-     class Student
+  
+   public class Student
     {
+
         public string Name { get; set; }
         public DateTime Birthdate { get; set; }
         public uint StudentNumber { get; set; }
@@ -34,4 +36,5 @@ namespace SchoolAdmin
             }
         }
     }
+
 }
