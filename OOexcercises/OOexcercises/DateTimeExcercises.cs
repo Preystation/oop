@@ -41,6 +41,8 @@ namespace OOexcercises
                 case 6:
                     H10_CodeTiming();
                     break;
+               
+                  
                 default:
                     Console.WriteLine("Onbekende keuze");
                     break;
@@ -117,5 +119,6 @@ namespace OOexcercises
             TimeSpan diff = end - start;
             Console.WriteLine($"Het duurt {diff.Milliseconds} milliseconden om een array van een miljoen elementen aan te maken en op te vullen met opeenvolgende waarden.");
         }
+       
     }
 }
