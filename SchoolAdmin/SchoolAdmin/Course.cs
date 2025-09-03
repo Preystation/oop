@@ -10,6 +10,16 @@ namespace SchoolAdmin
     {
         public string Title { get; set; }
         public List<Student> Students = new List<Student>();
+        public byte CreditPoints { get; set; }
+        public int Id 
+        { 
+            get 
+            { 
+                return maxId++; 
+            }
+        }
+        private int maxId = 1;
+        public static List<Course> AllCourses = new List<Course>();
 
         public void ShowOverview()
         {

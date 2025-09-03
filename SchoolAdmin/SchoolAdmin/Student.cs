@@ -51,7 +51,7 @@ namespace SchoolAdmin
         }
         public void ShowOverview()
         {
-            Console.WriteLine($"{Name}");
+            GenerateNameCard();
             Console.WriteLine($"Werkbelasting {DetermineWorkLoad()} uren");
             Console.WriteLine("Cijferrapport");
             Console.WriteLine("*************");
