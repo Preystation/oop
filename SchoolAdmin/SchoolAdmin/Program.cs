@@ -10,14 +10,16 @@ namespace SchoolAdmin
             Student s2 = new Student();
             s1.Name = "Said Aziz".Trim();
             s2.Name = "Mieke Vermeulen".Trim();
-            s1.RegisterForCourse("Programmeren ");
-            s1.RegisterForCourse("Databanken ");
-            s1.RegisterForCourse("Databanken ");
-            s2.RegisterForCourse("Communicatie ");
+            s1.RegisterForCourse("Communicatie", 12);
+            s1.RegisterForCourse("Programmeren",15);
+            s1.RegisterForCourse("Webtechnologie", 13);
+
+            s2.RegisterForCourse("Communicatie", 13);
+            s2.RegisterForCourse("Programmeren", 16);
+            s2.RegisterForCourse("Webtechnologie", 14); ;
             s1.Birthdate = new DateTime(2000, 06, 01);
             s2.Birthdate = new DateTime(1998, 01, 01);
-            s1.StudentCounter++;
-            s2.StudentCounter++;
+      
             s1.GenerateNameCard();
             Console.WriteLine(s1.DetermineWorkLoad());
             s2.GenerateNameCard();

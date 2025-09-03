@@ -13,26 +13,31 @@ namespace SchoolAdmin
         public string Name { get; set; }
         public DateTime Birthdate { get; set; }
         public uint StudentNumber { get; set; }
-        private  List<string> Courses = new List<string>();
+        private List<CourseResult> coursesResult = new List<CourseResult>();
 
-        public uint StudentCounter = 1;
+        public static uint StudentCounter = 1;
         public void GenerateNameCard()
         {
             Console.WriteLine($"{Name} (STUDENT)");
         }
         public double DetermineWorkLoad()
         {
-            return Courses.Count * 10;
+            return coursesResult.Count * 10;
         }
-        public void RegisterForCourse(string course)
+        public void RegisterForCourse(string course,double result)
         {
-            if (Courses.Contains(course))
+            if (result > 20)
             {
-                Console.WriteLine("Student kan zich niet dubbel inschrijven voor een vak.");
+                Console.WriteLine("Ongeldige cijfer cijfer mag niet hoger zijn dan 20.");
             }
             else
             {
-                Courses.Add(course);
+                CourseResult cr = new CourseResult();
+                cr.Name = course;
+                cr.Result = result;
+                coursesResult.Add(cr);
+                
+
             }
         }
     }
