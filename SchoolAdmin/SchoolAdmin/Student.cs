@@ -21,6 +21,17 @@ namespace SchoolAdmin
                 return age; } }
 
         public static uint StudentCounter = 1;
+
+        public Student(string name,DateTime birthdate)
+        {
+            this.Name = name;
+            this.Birthdate = birthdate;
+            StudentCounter++;
+        }
+      
+
+
+
         public void GenerateNameCard()
         {
             Console.WriteLine($"{Name} ({Age})");

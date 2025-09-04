@@ -6,19 +6,15 @@ namespace SchoolAdmin
     {
         public static void DemoStudents()
         {
-            Student s1 = new Student();
-            Student s2 = new Student();
-            s1.Name = "Said Aziz".Trim();
-            s2.Name = "Mieke Vermeulen".Trim();
+            Student s1 = new Student("Said Aziz",new DateTime(2000, 06, 01));
+            Student s2 = new Student("Mieke Vermeulen",new DateTime(1998, 01, 01));
             s1.RegisterForCourse("Communicatie", 12);
             s1.RegisterForCourse("Programmeren",15);
             s1.RegisterForCourse("Webtechnologie", 13);
-
             s2.RegisterForCourse("Communicatie", 13);
             s2.RegisterForCourse("Programmeren", 16);
             s2.RegisterForCourse("Webtechnologie", 14); ;
-            s1.Birthdate = new DateTime(2000, 06, 01);
-            s2.Birthdate = new DateTime(1998, 01, 01);
+      
 
             s1.ShowOverview();
             s2.ShowOverview();
@@ -33,8 +29,8 @@ namespace SchoolAdmin
             programmeren.Title = "programmeren";
             webtechnologie.Title = "webtechnologie ";
             databanken.Title = "databanken ";
-            Student s1 = new Student();
-            Student s2 = new Student();
+            Student s1 = new Student("Said Aziz", new DateTime(2000, 06, 01));
+            Student s2 = new Student("Mieke Vermeulen", new DateTime(1998, 01, 01));
             s1.Name = "Said Aziz".Trim();
             s2.Name = "Mieke Vermeulen".Trim();
             communicatie.Students.Add(s1);
