@@ -48,9 +48,8 @@ namespace SchoolAdmin
             }
             else
             {
-                CourseResult cr = new CourseResult();
-                cr.Name = course;
-                cr.Result = result;
+                CourseResult cr = new CourseResult(course, result);
+               
                 coursesResult.Add(cr);
 
 
