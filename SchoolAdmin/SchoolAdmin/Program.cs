@@ -21,7 +21,9 @@ namespace SchoolAdmin
         }
         public static void DemoCourses()
         {
-            Course communicatie = new Course();
+            Student s1 = new Student("Said Aziz", new DateTime(2000, 06, 01));
+            Course communicatie = new Course("communicatie",new List<Student> { s1},15);
+            /*
             Course programmeren = new Course();
             Course webtechnologie = new Course();
             Course databanken = new Course();
@@ -29,21 +31,24 @@ namespace SchoolAdmin
             programmeren.Title = "programmeren";
             webtechnologie.Title = "webtechnologie ";
             databanken.Title = "databanken ";
-            Student s1 = new Student("Said Aziz", new DateTime(2000, 06, 01));
+           
+           
             Student s2 = new Student("Mieke Vermeulen", new DateTime(1998, 01, 01));
-            s1.Name = "Said Aziz".Trim();
+           
             s2.Name = "Mieke Vermeulen".Trim();
             communicatie.Students.Add(s1);
             communicatie.Students.Add(s2);
+
             programmeren.Students.Add(s1);
             programmeren.Students.Add(s2);
             webtechnologie.Students.Add(s1);
             databanken.Students.Add(s2);
-
+             */
             communicatie.ShowOverview();
+            /*
             programmeren.ShowOverview();
             webtechnologie.ShowOverview();
-            databanken.ShowOverview();
+            databanken.ShowOverview();*/
         }
         static void Main(string[] args)
         {
