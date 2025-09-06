@@ -16,24 +16,26 @@ namespace SchoolAdmin
         private static int maxId = 1;
         public static List<Course> AllCourses = new List<Course>();
 
-        public Course(string title,List<Student> students,byte creditpoints)
+
+
+
+        public Course(string title,List<Student> students,byte creditPoints)
         {
             this.Title = title;
-            this.Students = new List<Student>();
-            this.CreditPoints = creditpoints;
-            Id = maxId++;
+            this.Students = students;
+            this.CreditPoints = creditPoints;
+            this.Id = maxId;
+            maxId++;
+
             AllCourses.Add(this);
         }
-        public Course(string title, List<Student> students) : this(title, students, 3)
-        {
-        }
-        public Course(string title) : this(title, new List<Student>())
-        {
-        }
-
+       public Course(string title, List<Student> students):this(title, students,3)
+        { }
+        public Course(string title) : this(title,new List<Student>(),3)
+        { }
         public void ShowOverview()
         {
-            Console.WriteLine($"{Title} ({Id}) ({CreditPoints} stp)");
+            Console.WriteLine($"{Title} ({Id}) ({CreditPoints}stp)");
             foreach (Student st in Students)
             {
                 Console.WriteLine(st.Name);

@@ -11,7 +11,7 @@ namespace SchoolAdmin
     {
 
         public string Name { get; set; }
-        public DateTime Birthdate;
+        public DateTime Birthdate { get; set; }
         public uint StudentNumber;
         private List<CourseResult> coursesResult = new List<CourseResult>();
         public int Age { get {
@@ -29,8 +29,6 @@ namespace SchoolAdmin
             StudentCounter++;
         }
       
-
-
 
         public void GenerateNameCard()
         {
