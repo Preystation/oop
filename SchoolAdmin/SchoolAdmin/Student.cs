@@ -38,7 +38,7 @@ namespace SchoolAdmin
         {
             return coursesResult.Count * 10;
         }
-        public void RegisterForCourse(string course, double result)
+        public void RegisterCourseResult(string course, double result)
         {
             if (result > 20)
             {

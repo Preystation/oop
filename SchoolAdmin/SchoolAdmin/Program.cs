@@ -8,12 +8,12 @@ namespace SchoolAdmin
         {
             Student s1 = new Student("Said Aziz",new DateTime(2000, 06, 01));
             Student s2 = new Student("Mieke Vermeulen",new DateTime(1998, 01, 01));
-            s1.RegisterForCourse("Communicatie", 12);
-            s1.RegisterForCourse("Programmeren",15);
-            s1.RegisterForCourse("Webtechnologie", 13);
-            s2.RegisterForCourse("Communicatie", 13);
-            s2.RegisterForCourse("Programmeren", 16);
-            s2.RegisterForCourse("Webtechnologie", 14); ;
+            s1.RegisterCourseResult("Communicatie", 12);
+            s1.RegisterCourseResult("Programmeren",15);
+            s1.RegisterCourseResult("Webtechnologie", 13);
+            s2.RegisterCourseResult("Communicatie", 13);
+            s2.RegisterCourseResult("Programmeren", 16);
+            s2.RegisterCourseResult("Webtechnologie", 14); ;
       
 
             s1.ShowOverview();
