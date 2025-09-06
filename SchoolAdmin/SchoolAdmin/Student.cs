@@ -13,7 +13,7 @@ namespace SchoolAdmin
         public string Name { get; set; }
         public DateTime Birthdate { get; set; }
         public uint StudentNumber;
-        private List<CourseResult> coursesResult = new List<CourseResult>();
+        private List<CourseResult> courseRegistrations = new List<CourseResult>();
         public int Age { get {
                 DateTime now = DateTime.Now;
                 int age = now.Year - Birthdate.Year;
@@ -36,9 +36,9 @@ namespace SchoolAdmin
         }
         public double DetermineWorkLoad()
         {
-            return coursesResult.Count * 10;
+            return courseRegistrations.Count * 10;
         }
-        public void RegisterForCourse(string course, double result)
+        public void RegisterForCourse(string course, double? result)
         {
             if (result > 20)
             {
@@ -48,7 +48,7 @@ namespace SchoolAdmin
             {
                 CourseResult cr = new CourseResult(course, result);
                
-                coursesResult.Add(cr);
+                courseRegistrations.Add(cr);
 
 
             }
@@ -56,11 +56,17 @@ namespace SchoolAdmin
         public double Average()
         {
             double sum = 0;
-            foreach (CourseResult cr in coursesResult)
+            int counter = 0;
+            foreach (CourseResult cr in courseRegistrations)
             {
-                sum = sum + cr.Result;
+                if (!(cr.Result is null))
+                {
+                    
+                    sum = sum + (byte)cr.Result;
+                    counter++;
+                }
             }
-            return sum / coursesResult.Count;
+            return sum / counter;
         }
         public void ShowOverview()
         {
@@ -68,7 +74,7 @@ namespace SchoolAdmin
             Console.WriteLine($"Werkbelasting {DetermineWorkLoad()} uren");
             Console.WriteLine("Cijferrapport");
             Console.WriteLine("*************");
-            foreach (CourseResult cr in coursesResult)
+            foreach (CourseResult cr in courseRegistrations)
             {
                 Console.WriteLine($"{cr.Name} {cr.Result}");
             }

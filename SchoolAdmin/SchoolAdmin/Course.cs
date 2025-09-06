@@ -42,5 +42,21 @@ namespace SchoolAdmin
             }
             Console.WriteLine();
         }
+        public static Course SearchCourseById(int id)
+        {
+
+            foreach (Course AllCourse in AllCourses)
+            {
+             
+                if ( AllCourse.Id == id)
+                {
+                    return AllCourse;
+                }
+             
+            }
+            return null;
+
+
+        }
     }
 }

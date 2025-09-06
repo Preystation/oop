@@ -6,18 +6,18 @@ namespace SchoolAdmin
     {
         public static void DemoStudents()
         {
-            Student s1 = new Student("Said Aziz",new DateTime(2000, 06, 01));
-            Student s2 = new Student("Mieke Vermeulen",new DateTime(1998, 01, 01));
-            s1.RegisterForCourse("Communicatie", 12);
-            s1.RegisterForCourse("Programmeren",15);
-            s1.RegisterForCourse("Webtechnologie", 13);
-            s2.RegisterForCourse("Communicatie", 13);
-            s2.RegisterForCourse("Programmeren", 16);
-            s2.RegisterForCourse("Webtechnologie", 14); ;
+            Student said = new Student("Said Aziz",new DateTime(2000, 06, 01));
+            Student mieke = new Student("Mieke Vermeulen",new DateTime(1998, 01, 01));
+            said.RegisterForCourse("Communicatie", 12);
+            said.RegisterForCourse("Programmeren",null);
+            said.RegisterForCourse("Webtechnologie", 13);
+            mieke.RegisterForCourse("Communicatie", 13);
+            mieke.RegisterForCourse("Programmeren", 16);
+            mieke.RegisterForCourse("Webtechnologie", 14); ;
       
 
-            s1.ShowOverview();
-            s2.ShowOverview();
+            said.ShowOverview();
+            mieke.ShowOverview();
         }
         public static void DemoCourses()
         {
