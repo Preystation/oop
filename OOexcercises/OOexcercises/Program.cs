@@ -1,78 +1,109 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
+using System.Reflection.Metadata;
 
 namespace OOexcercises
 {
     internal class Program
     {
-        public class Media
+
+        class Boek
         {
-            public string Titel;
+            private string titel;
+            private int paginas;
+            private string auteurs;
+            public string Titel { get { return titel; } }
+            public Boek(string boektitel,int boekpaginas,string boekAuteur)
+            {
+                this.titel = boektitel;
+               this.paginas = boekpaginas;
+                this.auteurs = boekAuteur;
+                if (paginas < 1) paginas = 1;
+            }
 
-            public void ToonInfo()
+            public Boek(string boektitel, int boekpaginas):this(boektitel, boekpaginas,"onbekend")
             {
-                Console.WriteLine($"{Titel}");
+                
             }
-            public Media(string titel)
-            {
-                Titel = titel;
-            }
-        }
-      public class Boeken : Media
-        {
-            public string Auteurs;
-            public Boeken(string titel, string auteurs) : base(titel)
-            {
-                Auteurs = auteurs;
-            }
-        }
-        public class Dier
-        {
-            public string Soort;
-            public int Leeftijd;
-
-
-            public Dier(string soort,int leeftijd)
-            {
-                this.Soort = soort;
-                this.Leeftijd = leeftijd;
-                if (leeftijd < 0) Leeftijd = 0;
-            }
-            public Dier() : this("Hond", 1)
+            public Boek(string boektitel) : this("Niet gevonden",100,"onbekend")
             {
 
             }
-            public Dier(string soort) : this(soort, 0)
+            public Boek() : this("Standaard")
             {
 
             }
-            public void ToonInfo()
-            {
-                Console.WriteLine("Soort: " + Soort + ", Leeftijd: " + Leeftijd);
-            }
+            
         }
 
-        
+
+
+        class Auto
+        {
+            private int benzine;
+            private int kilometers;
+            public int Benzine { get { return benzine; } }
+            public int Kilometers
+            {
+                get { return kilometers; }
+                set
+                {
+                    if (value == 15)
+                    {
+                        Console.WriteLine("Waarde kan niet 15 zijn ");
+
+                    }
+                    else
+                    {
+                        kilometers = value;
+                    }
+                }
+            }
+            public Auto(int benzine, int kilometers)
+            {
+                this.benzine = benzine;
+                this.Kilometers = kilometers;
+            }
+         
+
+            public Auto() : this(5, 5)
+            {
+                // Geen extra code hier
+            }
+        }
+        public static int CircuitPower(int voltage, int current)
+        {
+            int power = 0;
+            power = voltage * current;
+
+            return power;
+        }
+        public static int convert(int minutes)
+        {
+            int counter = 0;
+            int seconds = 0;
+            while (counter < minutes)
+            {
+                seconds = seconds + 60;
+                counter++;
+            }
+            return seconds;
+        }
         static void Main(string[] args)
         {
-            Dier d1 = new Dier("Vogelbekdier", 10);
-            d1.ToonInfo();
+            Boek b1 = new Boek("C# leren",301);
+            Boek b2 = new Boek();
+            Console.WriteLine($"{b1.Titel}");
+            Console.WriteLine($"{b2.Titel}");
+            Boek b3 = new Boek("c# vervangen",150);
+            Console.WriteLine($"{b1.Titel} {b1.Titel} {b1.Titel}");
+            Auto a1 = new Auto();
+            Console.WriteLine($"{a1.Benzine}, {a1.Kilometers}");
 
-            Dier d2 = new Dier();
-            Dier d3 = new Dier("Haai");
-            d2.ToonInfo();
-            d3.ToonInfo();
-
-            Dictionary<int, string> costumers = new Dictionary<int, string>();
-            costumers.Add(1, "Cedric");
-            costumers.Add(2, "Bart");
-            costumers.Add(3, "Kai");
-            costumers.Add(4, "Jan");
-
-            foreach(var costumer in costumers)
-            {
-                Console.WriteLine($"{costumer.Key}\t {costumer.Value}");
-            }
-            Console.WriteLine(costumers[1]);
+            Auto a2 = new Auto(10, 15);
+            Console.WriteLine($"{a2.Benzine}, {a2.Kilometers}");
+            Console.WriteLine("tet");
+            Console.WriteLine(convert(60));
         }
     }
 }
