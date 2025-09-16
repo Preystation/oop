@@ -11,7 +11,7 @@ namespace schooladmin
         public string Name;
         public DateTime Birthday;
         public uint StudentNumber;
-        public List<string> Courses = new List<string>();
+        private List<string> courses = new List<string>();
         public static uint StudentCounter = 1;
 
         public string GenerateNameCard()
@@ -20,7 +20,15 @@ namespace schooladmin
         }
         public byte DetermineWorkload()
         {
-            return (byte)(Courses.Count * 10);
+            return (byte)(courses.Count * 10);
+        }
+        public void RegisterForCourse(string course)
+        {
+            if (!courses.Contains(course))
+            {
+                courses.Add(course);
+            }
+            
         }
     }
 }

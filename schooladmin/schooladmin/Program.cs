@@ -9,12 +9,12 @@
             Student mieke = new Student();
             said.Name = "Said Aziz";
             said.Birthday = new DateTime(2000, 06, 01);
-            said.Courses.Add("Programmeren");
-            said.Courses.Add("Databanken");
+            said.RegisterForCourse("Programmeren");
+            said.RegisterForCourse("Databanken");
 
             mieke.Name = "Mieke Vermeulen";
             mieke.Birthday = new DateTime(1998, 01, 01);
-            mieke.Courses.Add("Communicatie");
+            mieke.RegisterForCourse("Communicatie");
 
 
             Console.WriteLine(said.GenerateNameCard());
