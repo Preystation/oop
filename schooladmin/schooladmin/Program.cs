@@ -2,8 +2,9 @@
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public static void DemoStudents()
         {
+
             Student said = new Student();
             Student mieke = new Student();
             said.Name = "Said Aziz";
@@ -14,10 +15,28 @@
             mieke.Name = "Mieke Vermeulen";
             mieke.Birthday = new DateTime(1998, 01, 01);
             mieke.Courses.Add("Communicatie");
-            
 
-            Console.WriteLine($"said {said.Name} geboren {said.Birthday.ToString("d")} met studentnummer {Student.StudentCounter++}; Said volgt {said.Courses[0]} en {said.Courses[1]}");
-            Console.WriteLine($"mieke {mieke.Name} geboren {mieke.Birthday.ToString("d")} met studentnummer {Student.StudentCounter++}; Mieke volgt {mieke.Courses[0]}");
+
+            Console.WriteLine(said.GenerateNameCard());
+            Console.WriteLine(said.DetermineWorkload());
+            Console.WriteLine(mieke.GenerateNameCard());
+            Console.WriteLine(mieke.DetermineWorkload());
+        }
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("Wat wil je doen?" +
+                "\n1. Demonstreerstudenten uitvoeren");
+            int number = Convert.ToInt32(Console.ReadLine());
+            switch (number)
+            {
+                case 1:
+                    DemoStudents();
+                    break;
+
+                default:
+                    break;
+            }
         }
 
     }

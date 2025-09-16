@@ -13,5 +13,14 @@ namespace schooladmin
         public uint StudentNumber;
         public List<string> Courses = new List<string>();
         public static uint StudentCounter = 1;
+
+        public string GenerateNameCard()
+        {
+            return $"{Name} (student)";
+        }
+        public byte DetermineWorkload()
+        {
+            return (byte)(Courses.Count * 10);
+        }
     }
 }
