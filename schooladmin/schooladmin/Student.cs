@@ -32,14 +32,27 @@ namespace schooladmin
             cr.Name = course;
             cr.Result = result;
             coursesResults.Add(cr);
-            
-            
-            /*
-            if (!courses.Contains(course))
+
+        }
+        public double Average()
+        { double som = 0;
+            foreach (CourseResult item in coursesResults)
             {
-                courses.Add(course);
-            }*/
-            
+                som = som + item.Result;
+            }
+            return som;
+        }
+        public void ShowOverview()
+        {
+            Console.WriteLine($"{GenerateNameCard()}" +
+                $"\nWerkbelasting:\t {DetermineWorkload()}" +
+                $"\nCijferraport" +
+                $"\n************");
+            foreach (CourseResult item in coursesResults)
+            {
+                Console.WriteLine($"{item.Name}:\t{item.Result}");
+            }
+
         }
     }
 }

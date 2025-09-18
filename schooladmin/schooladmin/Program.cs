@@ -9,18 +9,19 @@
             Student mieke = new Student();
             said.Name = "Said Aziz";
             said.Birthday = new DateTime(2000, 06, 01);
-            said.RegisterCourseResult("Programmeren");
-            said.RegisterCourseResult("Databanken");
-            mieke.RegisterCourseResult("webtechnologie");
+            said.RegisterCourseResult("Programmeren",15);
+            said.RegisterCourseResult("Communicatie",12);
+            said.RegisterCourseResult("webtechnologie",13);
 
+        
             mieke.Name = "Mieke Vermeulen";
             mieke.Birthday = new DateTime(1998, 01, 01);
+            mieke.RegisterCourseResult("Programmeren", 16);
+            mieke.RegisterCourseResult("Databanken", 14);
+            mieke.RegisterCourseResult("webtechnologie",15);
 
-
-            Console.WriteLine(said.GenerateNameCard());
-            Console.WriteLine(said.DetermineWorkload());
-            Console.WriteLine(mieke.GenerateNameCard());
-            Console.WriteLine(mieke.DetermineWorkload());
+            said.ShowOverview();
+            mieke.ShowOverview();
         }
         public static void DemoCourses()
         {
