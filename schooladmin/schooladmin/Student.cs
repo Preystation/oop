@@ -44,7 +44,7 @@ namespace schooladmin
         }
         public void ShowOverview()
         {
-            string message = "Cijferraport ".Trim();
+            string message = "Cijferraport".Trim();
             string line = "";
             while (message.Length!= line.Length)
             {
