@@ -44,15 +44,23 @@ namespace schooladmin
         }
         public void ShowOverview()
         {
+            string message = "Cijferraport ".Trim();
+            string line = "";
+            while (message.Length!= line.Length)
+            {
+                line = line + "*";
+            }
+           
             Console.WriteLine($"{GenerateNameCard()}" +
-                $"\nWerkbelasting:\t {DetermineWorkload()}" +
-                $"\nCijferraport" +
-                $"\n************");
+                $"\nWerkbelasting:\t{DetermineWorkload()}" +
+                $"\n{message}" +
+                $"\n{line}");
+            
             foreach (CourseResult item in coursesResults)
             {
                 Console.WriteLine($"{item.Name}:\t{item.Result}");
             }
-
+             Console.WriteLine("");
         }
     }
 }
