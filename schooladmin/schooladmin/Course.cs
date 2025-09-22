@@ -10,6 +10,25 @@ namespace schooladmin
     {
         public string Title;
         public List<Student> Students = new List<Student>();
+        private byte creditpoints;
+        public byte Creditpoints {
+            get
+            {
+                return creditpoints;
+            }
+           private set
+            {
+
+            }
+                }
+        private int id;
+        public int Id { 
+            get 
+            { return id; 
+            }
+        }
+        private int maxId = 1;
+        public List<Course> Courses = new List<Course>();
         public void ShowOverview()
         {
             Console.WriteLine($"{Title}");
