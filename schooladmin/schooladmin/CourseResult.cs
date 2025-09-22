@@ -8,7 +8,31 @@ namespace schooladmin
 {
     internal class CourseResult
     {
-        public string Name;
-        public byte Result;
+        private string name;
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
+        private byte result;
+        public byte Result { 
+            get
+            {
+                return result;
+            }
+            set
+            {
+                if (value<=20)
+                {
+                    result = value;
+                }
+            }
+        }
     }
 }

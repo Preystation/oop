@@ -13,10 +13,19 @@ namespace schooladmin
         public uint StudentNumber;
         private List<CourseResult> coursesResults = new List<CourseResult>();
         public static uint StudentCounter = 1;
+        public int Age { 
+            get
+            {
+                DateTime now = DateTime.Now;
+                int age = now.Year - Birthday.Year;
+                return age;
+            }
+        
+        }
 
         public string GenerateNameCard()
         {
-            return $"{Name} (student)";
+            return $"{Name} ({Age} jaar)";
         }
         public byte DetermineWorkload()
         {

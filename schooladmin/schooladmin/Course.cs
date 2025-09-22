@@ -27,8 +27,8 @@ namespace schooladmin
             { return id; 
             }
         }
-        private int maxId = 1;
-        public List<Course> Courses = new List<Course>();
+        private static int maxId = 1;
+        public static List<Course> Courses = new List<Course>();
         public void ShowOverview()
         {
             Console.WriteLine($"{Title}");
