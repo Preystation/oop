@@ -18,7 +18,7 @@ namespace schooladmin
             }
            private set
             {
-
+                creditpoints = value;
             }
                 }
         private int id;
@@ -28,7 +28,22 @@ namespace schooladmin
             }
         }
         private static int maxId = 1;
-        public static List<Course> Courses = new List<Course>();
+        public static List<Course> AllCourses = new List<Course>();
+
+        public Course(string title,List<Student> students,byte creditPoints)
+        {
+            this.Title = title;
+            this.Students = students;
+            this.Creditpoints = creditPoints;
+            id = maxId + 1; 
+        }
+
+        public Course(string title, List<Student> students) : this(title, students, 3)
+        {
+
+        }
+
+        public Course(string title) : this(title, new List<Student>()) { }
         public void ShowOverview()
         {
             Console.WriteLine($"{Title}");

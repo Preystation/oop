@@ -22,7 +22,12 @@ namespace schooladmin
             }
         
         }
-
+        public Student(string name,DateTime birthDate)
+        {
+            this.Name = name;
+            this.Birthday = birthDate;
+            StudentNumber = StudentCounter + 1;
+        }
         public string GenerateNameCard()
         {
             return $"{Name} ({Age} jaar)";
@@ -31,7 +36,7 @@ namespace schooladmin
         {
             return (byte)(coursesResults.Count * 10);
         }
-        public void RegisterCourseResult(string course,byte result)
+        public void RegisterCourseResult(string course,double result)
         {
             if(result > 20)
             {
