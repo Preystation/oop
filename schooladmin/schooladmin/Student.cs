@@ -36,15 +36,13 @@ namespace schooladmin
         {
             return (byte)(coursesResults.Count * 10);
         }
-        public void RegisterCourseResult(string course,double result)
+        public void RegisterCourseResult(string course,byte result)
         {
             if(result > 20)
             {
                 Console.WriteLine("Ongeldige Cijfer");
             }
-            CourseResult cr = new CourseResult();
-            cr.Name = course;
-            cr.Result = result;
+            CourseResult cr = new CourseResult(course, result);
             coursesResults.Add(cr);
 
         }

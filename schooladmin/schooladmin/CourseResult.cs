@@ -34,5 +34,10 @@ namespace schooladmin
                 }
             }
         }
+        public CourseResult(string name,byte result)
+        {
+            this.name = name;
+            this.result = result;
+        }
     }
 }

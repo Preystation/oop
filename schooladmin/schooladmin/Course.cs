@@ -36,6 +36,7 @@ namespace schooladmin
             this.Students = students;
             this.Creditpoints = creditPoints;
             id = maxId + 1; 
+            
         }
 
         public Course(string title, List<Student> students) : this(title, students, 3)
