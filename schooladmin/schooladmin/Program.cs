@@ -18,17 +18,21 @@
         {
             Student said = new Student("Said Aziz", new DateTime(2000, 06, 01));
             Student mieke = new Student("Mieke Vermeulen", new DateTime(1998, 01, 01));
-            Course databanken = new Course("Databanken");
-            Course communicatie = new Course("communicatie");
-            Course programmeren = new Course("programmeren");
-            Course webtechnologie = new Course("webtechnologie");
-            programmeren.Students.Add(said);
-            communicatie.Students.Add(said);
-            webtechnologie.Students.Add(said);
-
-            programmeren.Students.Add(mieke);
-            communicatie.Students.Add(mieke);
-            databanken.Students.Add(mieke);
+            List<Student> StudentsDatabanken = new List<Student>();
+            List<Student> Studentscommunicatie = new List<Student>();
+            List<Student> Studentsprogrammeren = new List<Student>();
+            List<Student> Studentswebtechnologie = new List<Student>();
+            StudentsDatabanken.Add(mieke);
+            Studentscommunicatie.Add(said);
+            Studentscommunicatie.Add(mieke);
+            Studentsprogrammeren.Add(said);
+            Studentsprogrammeren.Add(mieke);
+            Studentswebtechnologie.Add(said);
+            Course databanken = new Course("databanken",StudentsDatabanken,9);
+            Course communicatie = new Course("communicatie", Studentscommunicatie,6);
+            Course programmeren = new Course("programmeren", Studentsprogrammeren,9);
+            Course webtechnologie = new Course("webtechnologie", Studentswebtechnologie,9);
+       
 
             communicatie.ShowOverview();
             programmeren.ShowOverview();

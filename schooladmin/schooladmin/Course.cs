@@ -27,16 +27,17 @@ namespace schooladmin
             { return id; 
             }
         }
-        private static int maxId = 1;
+        private static int maxId = 0;
         public static List<Course> AllCourses = new List<Course>();
 
+    
         public Course(string title,List<Student> students,byte creditPoints)
         {
             this.Title = title;
             this.Students = students;
             this.Creditpoints = creditPoints;
-            id = maxId + 1; 
-            
+            id = maxId++;
+            AllCourses.Add(this);
         }
 
         public Course(string title, List<Student> students) : this(title, students, 3)
@@ -47,7 +48,7 @@ namespace schooladmin
         public Course(string title) : this(title, new List<Student>()) { }
         public void ShowOverview()
         {
-            Console.WriteLine($"{Title}");
+            Console.WriteLine($"{Title} ({id}) ({creditpoints})");
             foreach (Student item in Students)
             {
                 Console.WriteLine(item.Name);
