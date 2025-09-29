@@ -20,24 +20,24 @@ namespace schooladmin
                 name = value;
             }
         }
-        private byte result;
-        public byte Result { 
+        private byte? result;
+        public byte? Result { 
             get
             {
                 return result;
             }
             set
             {
-                if (value<=20)
+                if ((value>20) && !(value is not null))
                 {
                     result = value;
                 }
             }
         }
-        public CourseResult(string name,byte result)
+        public CourseResult(string name,byte? result)
         {
             this.name = name;
-            this.result = result;
+            this.Result = result;
         }
     }
 }

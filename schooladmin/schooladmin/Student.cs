@@ -11,7 +11,7 @@ namespace schooladmin
         public string Name;
         public DateTime Birthday;
         public uint StudentNumber;
-        private List<CourseResult> coursesResults = new List<CourseResult>();
+        private List<CourseResult> courseRegistrations = new List<CourseResult>();
         public static uint StudentCounter = 1;
         public int Age { 
             get
@@ -34,25 +34,33 @@ namespace schooladmin
         }
         public byte DetermineWorkload()
         {
-            return (byte)(coursesResults.Count * 10);
+            return (byte)(courseRegistrations.Count * 10);
         }
-        public void RegisterCourseResult(string course,byte result)
+        public void RegisterCourseResult(string course,byte? result)
         {
             if(result > 20)
             {
                 Console.WriteLine("Ongeldige Cijfer");
             }
-            CourseResult cr = new CourseResult(course, result);
-            coursesResults.Add(cr);
+            else
+            {
+                CourseResult cr = new CourseResult(course, result);
+                courseRegistrations.Add(cr);
+            }
 
         }
         public double Average()
-        { double som = 0;
-            foreach (CourseResult item in coursesResults)
+        { double sum = 0;
+            int total = 0;
+            foreach (CourseResult item in courseRegistrations)
             {
-                som = som + item.Result;
+                if(item.Result is not null)
+                {
+                    sum = sum + (byte)item.Result;
+                    total = total + 10;
+                }
             }
-            return som;
+            return total;
         }
         public void ShowOverview()
         {
@@ -68,7 +76,7 @@ namespace schooladmin
                 $"\n{message}" +
                 $"\n{line}");
             
-            foreach (CourseResult item in coursesResults)
+            foreach (CourseResult item in courseRegistrations)
             {
                 Console.WriteLine($"{item.Name}:\t{item.Result}");
             }

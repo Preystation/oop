@@ -7,7 +7,9 @@
 
             Student said = new Student("Said Aziz", new DateTime(2000, 06, 01));
             Student mieke = new Student("Mieke Vermeulen", new DateTime(1998, 01, 01));
-      
+            said.RegisterCourseResult("communicatie", 12);
+            said.RegisterCourseResult("programmeren", null);
+            said.RegisterCourseResult("webtechnologie", 13);
 
             Console.WriteLine(said.GenerateNameCard());
             Console.WriteLine(said.DetermineWorkload());
