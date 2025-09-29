@@ -30,7 +30,7 @@ namespace schooladmin
         }
         public string GenerateNameCard()
         {
-            return $"{Name} ({Age} jaar)";
+            return $"{courseRegistrations}";
         }
         public byte DetermineWorkload()
         {

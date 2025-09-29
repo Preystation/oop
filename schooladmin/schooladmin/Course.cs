@@ -58,13 +58,13 @@ namespace schooladmin
             Console.WriteLine();
         }
 
-        public Course SearchCourseById(int id)
+        public static Course SearchCourseById(int id)
         {
             foreach( Course item in AllCourses)
             {
                 if(item.id == id)
                 {
-                    Console.WriteLine($"{item.Title} is gevonden") ;
+                    return item;
                 }
             }
             return null;

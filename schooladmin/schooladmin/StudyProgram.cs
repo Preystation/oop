@@ -34,6 +34,8 @@ namespace schooladmin
             StudyProgram snbProgram = new StudyProgram("Systeem- en netwerkbeheer");
             programmerenProgram.Courses = courses;
             snbProgram.Courses = courses;
+            //we willen hieronder Databanken schrappen uit het programma SNB
+            snbProgram.Courses.Remove(databanken);
             programmerenProgram.ShowOverview();
             snbProgram.ShowOverview();
         }

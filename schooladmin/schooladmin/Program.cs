@@ -4,7 +4,7 @@
     {
         public static void ReadTextFormatStudent()
         {
-
+            Console.WriteLine("Geef de tekstvoorstelling van 1 student in CSV-formaat:");
         }
         public static void DemoStudents()
         {
