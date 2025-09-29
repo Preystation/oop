@@ -40,6 +40,7 @@ namespace schooladmin
             AllCourses.Add(this);
         }
 
+
         public Course(string title, List<Student> students) : this(title, students, 3)
         {
 
@@ -56,5 +57,17 @@ namespace schooladmin
             }
             Console.WriteLine();
         }
+
+        public Course SearchCourseById(int id)
+        {
+            foreach( Course item in AllCourses)
+            {
+                if(item.id == id)
+                {
+                    Console.WriteLine($"{item.Title} is gevonden") ;
+                }
+            }
+            return null;
+        } 
     }
 }
