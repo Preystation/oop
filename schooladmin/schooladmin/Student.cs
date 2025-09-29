@@ -11,7 +11,7 @@ namespace schooladmin
         public string Name;
         public DateTime Birthday;
         public uint StudentNumber;
-        private List<CourseResult> courseRegistrations = new List<CourseResult>();
+        private List<CourseRegistration> courseRegistrations = new List<CourseRegistration>();
         public static uint StudentCounter = 1;
         public int Age { 
             get
@@ -44,7 +44,7 @@ namespace schooladmin
             }
             else
             {
-                CourseResult cr = new CourseResult(course, result);
+                CourseRegistration cr = new CourseRegistration(course, result);
                 courseRegistrations.Add(cr);
             }
 
@@ -52,7 +52,7 @@ namespace schooladmin
         public double Average()
         { double sum = 0;
             int total = 0;
-            foreach (CourseResult item in courseRegistrations)
+            foreach (CourseRegistration item in courseRegistrations)
             {
                 if(item.Result is not null)
                 {
@@ -71,12 +71,13 @@ namespace schooladmin
                 line = line + "*";
             }
            
-            Console.WriteLine($"{GenerateNameCard()}" +
+            Console.WriteLine($"" +
+                $"{GenerateNameCard()}" +
                 $"\nWerkbelasting:\t{DetermineWorkload()}" +
                 $"\n{message}" +
                 $"\n{line}");
             
-            foreach (CourseResult item in courseRegistrations)
+            foreach (CourseRegistration item in courseRegistrations)
             {
                 Console.WriteLine($"{item.Name}:\t{item.Result}");
             }

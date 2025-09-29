@@ -2,14 +2,23 @@
 {
     internal class Program
     {
+        public static void ReadTextFormatStudent()
+        {
+
+        }
         public static void DemoStudents()
         {
 
             Student said = new Student("Said Aziz", new DateTime(2000, 06, 01));
             Student mieke = new Student("Mieke Vermeulen", new DateTime(1998, 01, 01));
-            said.RegisterCourseResult("communicatie", 12);
-            said.RegisterCourseResult("programmeren", null);
-            said.RegisterCourseResult("webtechnologie", 13);
+            Course databanken = new Course("Databanken");
+            Course webtechnologie = new Course("webtechnologie");
+            Course programmeren = new Course("Programmeren");
+            Course communicatie = new Course("communicatie");
+
+            said.RegisterCourseResult(communicatie.Title, 12);
+            said.RegisterCourseResult(programmeren.Title, null);
+            said.RegisterCourseResult(webtechnologie.Title, 13);
 
             Console.WriteLine(said.GenerateNameCard());
             Console.WriteLine(said.DetermineWorkload());
@@ -34,13 +43,13 @@
             Course communicatie = new Course("communicatie", Studentscommunicatie,6);
             Course programmeren = new Course("programmeren", Studentsprogrammeren,9);
             Course webtechnologie = new Course("webtechnologie", Studentswebtechnologie,9);
+
        
 
             communicatie.ShowOverview();
             programmeren.ShowOverview();
             webtechnologie.ShowOverview();
             databanken.ShowOverview();
-            databanken.SearchCourseById(2);
            
         }
         static void Main(string[] args)
@@ -58,6 +67,7 @@
                 case 2:
                     DemoCourses();
                     break;
+
                 default:
                     break;
             }
