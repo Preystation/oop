@@ -21,10 +21,10 @@ namespace schooladmin
             Console.WriteLine($"{name}");
             foreach( Course item in Courses)
             {
-                Console.WriteLine($"");
+                Console.WriteLine($"{item.Title}");
             }
         }
-        public void DemostudyProgram()
+        public static void DemostudyProgram()
         {
             Course communicatie = new Course("Communicatie");
             Course programmeren = new Course("Programmeren");

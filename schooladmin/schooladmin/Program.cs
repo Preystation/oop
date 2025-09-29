@@ -5,6 +5,24 @@
         public static void ReadTextFormatStudent()
         {
             Console.WriteLine("Geef de tekstvoorstelling van 1 student in CSV-formaat:");
+            // >Bart Van Steen;04;03;1998;Boekhouden;14;Macro-economie;8;Frans, deel 2;18
+            string csvLines = Console.ReadLine();
+
+
+
+            File.WriteAllText("studentCsv", csvLines);
+
+            string[] lines = File.ReadAllLines("studentCsv");
+
+            Student[] student = new Student[lines.Length];
+            for(int i = 0; i < lines.Length; i++)
+            {
+                string[] kolomwaarden = lines[i].Split(',');
+                student[i] = new Student(kolomwaarden[0], Convert.ToDateTime(kolomwaarden[1]), kolomwaarden[2], Convert.ToInt32(kolomwaarden[3]), kolomwaarden[4], Convert.ToInt32(kolomwaarden[5]), kolomwaarden[6], Convert.ToInt32(kolomwaarden[7]));
+            }
+
+
+
         }
         public static void DemoStudents()
         {
