@@ -76,10 +76,15 @@ namespace OOexcercises
         }
         public static void DemoPurchase()
         {
+            DateTime now = DateTime.Now;
             FoodPurchase kaas = new FoodPurchase("kaas", 2, 2.45, new DateTime(2025 , 09 , 25).AddMonths(2),true);
             Console.WriteLine($"De totale prijs is {kaas.CalculateTotalPrice()}");
-            Console.WriteLine($"De vervaldatum is {kaas.ExpirationDate}");
-            
+            Console.WriteLine($"De vervaldatum is {kaas.ExpirationDate.ToString("d")}");
+
+            FoodPurchase boter = new FoodPurchase("Boter", 0,5555, now.AddMonths(2), true);
+            Console.WriteLine($"De totale prijs is {boter.CalculateTotalPrice()}");
+            Console.WriteLine($"De vervaldatum is {boter.ExpirationDate.ToString("d")}");
+
         }
     }
 }
