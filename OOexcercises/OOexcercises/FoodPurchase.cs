@@ -8,56 +8,78 @@ namespace OOexcercises
 {
     internal class FoodPurchase
     {
-        public bool Refrigerate;
-        public string ProductName { get; }
-        public int Number
-        {
+        public bool refrigerate;
+        public string ProductName { 
             get
             {
-                return Number;
+                return productname;
             }
+            set 
+            {
+                productname = value.ToUpper();
+            }
+        }
+        public int Number
+        {
+            get { return number; }
+           private set
+            {
+                if (value > 0)
+                {
+                    number = value;
+                }
+            }
+        }
+        public double Unitprice
+        {
+            get { return unitprice; }
             set
             {
-
-                if (value < 0)
+                if (value >= 0 && value <= 50)
                 {
-                    Console.WriteLine("Ongeldig aantal");
+                    unitprice = value;
                 }
                 else
                 {
-                    Number++;
+                    Console.WriteLine("Eenheidsprijs moet tussen 0 en 50 liggen.");
                 }
             }
         }
-        public double UnitPrice
-        {
-            get
+        public DateTime ExpirationDate { 
+            get 
+            { 
+                return expirationDate; 
+            } 
+            set 
             {
-                return UnitPrice;
-            }
-            set
-            {
-                if(value<0 || value > 5000)
-                {
-                    Console.WriteLine("Ongeldige eenheidsprijs");
-                }
-            }
+                expirationDate = value;
+            } 
         }
-        public DateTime ExpirationDate { get { return ExpirationDate.AddMonths(2); } }
 
-        public FoodPurchase(string productName, byte number,double unitPrice,bool refrigerate)
+
+        private string productname;
+        private int number;
+        private double unitprice;
+        private DateTime expirationDate;
+
+        public FoodPurchase(string productname, int number, double unitprice, DateTime expirationDate,bool refrigerate)
         {
-            this.ProductName = productName.ToUpper();
+            this.ProductName = productname;
             this.Number = number;
-            this.UnitPrice = unitPrice;
-            this.Refrigerate = refrigerate;
+            this.Unitprice = unitprice;
+            this.ExpirationDate = expirationDate;
+            this.refrigerate = refrigerate;
         }
         public double CalculateTotalPrice()
         {
-            return UnitPrice * Number;
+            return Unitprice * Number;
         }
-
-      
-       
+        public static void DemoPurchase()
+        {
+            FoodPurchase kaas = new FoodPurchase("kaas", 2, 2.45, new DateTime(2025 , 09 , 25).AddMonths(2),true);
+            Console.WriteLine($"De totale prijs is {kaas.CalculateTotalPrice()}");
+            Console.WriteLine($"De vervaldatum is {kaas.ExpirationDate}");
+            
+        }
     }
 }

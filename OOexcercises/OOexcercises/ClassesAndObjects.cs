@@ -14,6 +14,7 @@ namespace OOexcercises
         {
             Console.WriteLine("Uit te voeren oefening?"+
       "\n1. H10_CombinationOf2Numbers" +
+      "\n2 H10Figures" +
       "\n4 H11_FoodPurchase");
             int userInput = Convert.ToInt32(Console.ReadLine());
 
@@ -22,8 +23,11 @@ namespace OOexcercises
                 case 1:
                    H10_CombinationOf2Numbers();
                     break;
+                case 2:
+
+                    break;
                 case 4:
-                    DemoPurchase();
+                    FoodPurchase.DemoPurchase();
                     break;
                 default:
                     Console.WriteLine("Onbekende keuze");
@@ -32,10 +36,10 @@ namespace OOexcercises
         }
 
 
-        public class CombinationOf2Numbers // hulp van chatgpt
+        public class CombinationOf2Numbers 
         {
-            public int number1 { get; set; }
-            public int number2 {get;set;}
+            public int number1;
+            public int number2;
 
             public double Sum()
             {
@@ -76,16 +80,12 @@ namespace OOexcercises
             Console.WriteLine("Quotient = " + pair.Quotient());
         }
 
-
-        public static void DemoPurchase()
+        public static void H10_Figures()
         {
-            FoodPurchase kaas = new FoodPurchase("kaas", 2, 2.45, true);
-            FoodPurchase boter = new FoodPurchase("Boter", 0, 5555, true);
-
-            Console.WriteLine($"De Totaalprijs van {kaas.ProductName} is {kaas.CalculateTotalPrice}" +
-                $"De vervaldatum van aankoop{kaas.Number} is {kaas.ExpirationDate}");
 
         }
+
+
 
     }
 }

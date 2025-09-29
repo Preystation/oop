@@ -13,6 +13,7 @@ namespace OOexcercises
                 "\nTopic van de uit te voeren oefening?" +
                 "\n1. DateTime" +
                 "\n2. Classes and objects");
+               
             int userInput = Convert.ToInt32(Console.ReadLine());
 
             switch (userInput)
@@ -23,6 +24,8 @@ namespace OOexcercises
                 case 2:
                     ClassesAndObjects.Submenu();
                     break;
+                case 3:
+                    
                 default:
                     Console.WriteLine("Onbekende keuze");
                     break;
