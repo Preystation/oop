@@ -28,7 +28,7 @@ namespace schooladmin
             }
             set
             {
-                if ((value>20) && !(value is not null))
+                if ((value>20) && (value is not null))
                 {
                     result = value;
                 }

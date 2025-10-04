@@ -36,8 +36,8 @@ namespace schooladmin
             this.Title = title;
             this.Students = students;
             this.Creditpoints = creditPoints;
-            id = maxId++;
-            AllCourses.Add(this);
+            Course.maxId++;
+            Course.AllCourses.Add(this);
         }
 
 
@@ -49,7 +49,7 @@ namespace schooladmin
         public Course(string title) : this(title, new List<Student>()) { }
         public void ShowOverview()
         {
-            Console.WriteLine($"{Title} ({id}) ({creditpoints})");
+            Console.WriteLine($"{Title} ({id}) ({creditpoints}stp)");
             foreach (Student item in Students)
             {
                 Console.WriteLine(item.Name);

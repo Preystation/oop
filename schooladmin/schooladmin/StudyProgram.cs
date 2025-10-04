@@ -10,8 +10,18 @@ namespace schooladmin
     {
         private string name;
         public string Name{ get { return name; } }
-        List<Course> Courses = new List<Course>();
-
+       private List<Course> courses = new List<Course>();
+        public List<Course> Courses
+        {
+            get
+            {
+                return courses;
+            }
+            set
+            {
+                courses = value;
+            }
+        }
         public StudyProgram(string name)
         {
 

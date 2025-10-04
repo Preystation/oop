@@ -4,22 +4,7 @@
     {
         public static void ReadTextFormatStudent()
         {
-            Console.WriteLine("Geef de tekstvoorstelling van 1 student in CSV-formaat:");
-            // >Bart Van Steen;04;03;1998;Boekhouden;14;Macro-economie;8;Frans, deel 2;18
-            string csvLines = Console.ReadLine();
-
-
-
-            File.WriteAllText("studentCsv", csvLines);
-
-            string[] lines = File.ReadAllLines("studentCsv");
-
-            Student[] student = new Student[lines.Length];
-            for(int i = 0; i < lines.Length; i++)
-            {
-                string[] kolomwaarden = lines[i].Split(',');
-                student[i] = new Student(kolomwaarden[0], Convert.ToDateTime(kolomwaarden[1]), kolomwaarden[2], Convert.ToInt32(kolomwaarden[3]), kolomwaarden[4], Convert.ToInt32(kolomwaarden[5]), kolomwaarden[6], Convert.ToInt32(kolomwaarden[7]));
-            }
+           
 
 
 
@@ -38,11 +23,14 @@
             said.RegisterCourseResult(programmeren.Title, null);
             said.RegisterCourseResult(webtechnologie.Title, 13);
 
-            Console.WriteLine(said.GenerateNameCard());
-            Console.WriteLine(said.DetermineWorkload());
-            Console.WriteLine(mieke.GenerateNameCard());
-            Console.WriteLine(mieke.DetermineWorkload());
+            said.ShowOverview();
+
+            mieke.RegisterCourseResult(communicatie.Title, 13);
+            mieke.RegisterCourseResult(programmeren.Title, 16);
+            mieke.RegisterCourseResult(databanken.Title, 14);
+            mieke.ShowOverview();
         }
+        
         public static void DemoCourses()
         {
             Student said = new Student("Said Aziz", new DateTime(2000, 06, 01));
@@ -70,6 +58,19 @@
             databanken.ShowOverview();
            
         }
+        public static void DemoStudyProgram()
+        {
+            Course communicatie = new Course("Communicatie");
+            Course programmeren = new Course("Programmeren");
+            Course databanken = new Course("Databanken");
+            List<Course> courses = new List<Course>() { communicatie, programmeren, databanken };
+            StudyProgram programmerenProgram = new StudyProgram("Programmeren");
+            StudyProgram snbProgram = new StudyProgram("Systeem- en netwerkbeheer");
+            programmerenProgram.Courses = courses;
+            snbProgram.Courses = courses;
+            programmerenProgram.ShowOverview();
+            snbProgram.ShowOverview();
+        }
         static void Main(string[] args)
         {
 
@@ -85,7 +86,13 @@
                 case 2:
                     DemoCourses();
                     break;
+                case 3:
 
+                    break;
+
+                case 4:
+                    DemoStudyProgram();
+                    break;
                 default:
                     break;
             }
