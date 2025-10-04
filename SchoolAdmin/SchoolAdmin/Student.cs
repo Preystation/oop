@@ -11,8 +11,22 @@ namespace SchoolAdmin
         public string Name;
         public DateTime Birthdate;
         public int StudentNumber;
-        private List<string> courses = new List<string>();
+        private List<CourseResult> courseResult = new List<CourseResult>();
         public static int StudentCounter = 1;
+        public int Age { get 
+            {
+                TimeSpan difference = DateTime.Now - Birthdate;
+                int years = (int)(difference.Days / 365);
+                return years;
+            } 
+        }
+        public Student(string name,DateTime birthDate)
+        {
+            this.Name = name;
+            this.Birthdate = birthDate;
+            StudentCounter++;
+        }
+
 
 
         public string GenerateNameCard()
@@ -22,22 +36,60 @@ namespace SchoolAdmin
 
         public byte DetermineWorkLoad()
         {
-            return (byte)(courses.Count()*10);
+            return (byte)(courseResult.Count()*10);
         }
 
-        public void RegisterForCourse(string course)
+        public void RegisterCourseResult(string course,byte result )
         {
-            foreach(string item in courses)
+
+            if (result > 20 && result <0)
             {
-                if(item == course)
-                {
-                    Console.WriteLine($"{Name} is al ingeschreven voor deze cursus.");
-                }
-                else
-                {
-                    courses.Add(course);
-                }
+                Console.WriteLine("Ongeldige cijfer");
             }
+
+
+            else
+            {
+                CourseResult cr = new CourseResult(course, result);
+                
+            }
+
+                    
+                
+            }
+        public double Average()
+        {
+            double sum = 0;
+            foreach (CourseResult cr in courseResult)
+            {
+                sum = sum + cr.Result;
+            }
+            return sum / courseResult.Count;
+        }
+
+
+
+        public void ShowOverview()
+        {
+            string cijferrapport = "Cijferrapport";
+            string lines = "";
+            while (lines .Length!= cijferrapport.Length)
+            {
+                lines = lines + "*";
+            }
+
+            Console.WriteLine($"{Name} {Age}" +
+                $"\nWerkbelasting\t{Average()}" +
+                $"\n{cijferrapport}" +
+                $"\n{lines}");
+
+            foreach (CourseResult cr in courseResult)
+            {
+                Console.WriteLine($"{cr.Name}:\t{cr.Result}");
+            }
+            Console.WriteLine();
+        }
+
         }
     }
-}
+
