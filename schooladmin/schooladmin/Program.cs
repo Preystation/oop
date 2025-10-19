@@ -1,73 +1,137 @@
-﻿namespace schooladmin
+﻿namespace SchoolAdmin
 {
+
     internal class Program
     {
         public static void DemoStudents()
         {
 
-            Student said = new Student();
-            Student mieke = new Student();
-            said.Name = "Said Aziz";
-            said.Birthday = new DateTime(2000, 06, 01);
-            said.RegisterCourseResult("Programmeren",15);
-            said.RegisterCourseResult("Communicatie",12);
-            said.RegisterCourseResult("webtechnologie",13);
+            Student said = new Student("Said Aziz", new DateTime(2000, 06, 01));
+            Student mieke = new Student("Mieke Vermeulen", new DateTime(1998, 01, 01));
 
-        
-            mieke.Name = "Mieke Vermeulen";
-            mieke.Birthday = new DateTime(1998, 01, 01);
-            mieke.RegisterCourseResult("Programmeren", 16);
-            mieke.RegisterCourseResult("Databanken", 14);
-            mieke.RegisterCourseResult("webtechnologie",15);
+            Course databanken = new Course("Databanken");
+            Course programmeren = new Course("Programmeren");
+            Course webtechnologie = new Course("Webtechnologie");
+            Course communicatie = new Course("Communicatie");
+            said.RegisterCourseResult(communicatie, 12);
+            said.RegisterCourseResult(programmeren, null);
+            said.RegisterCourseResult(webtechnologie, 13);
+
+            mieke.RegisterCourseResult(communicatie, 13);
+            mieke.RegisterCourseResult(programmeren, 16);
+            mieke.RegisterCourseResult(databanken, 13);
+
 
             said.ShowOverview();
             mieke.ShowOverview();
+
+
+
         }
         public static void DemoCourses()
         {
-            Student said = new Student();
-            Student mieke = new Student();
-            said.Name = "Said Aziz";
-            mieke.Name = "Mieke Vermeulen";
-            Course databanken = new Course();
-            Course communicatie = new Course();
-            Course programmeren = new Course();
-            Course webtechnologie = new Course();
-            databanken.Title = "Databanken";
-            communicatie.Title = "communicatie";
-            programmeren.Title = "programmeren";
-            webtechnologie.Title = "webtechnologie";
-            communicatie.Students.Add(mieke);
-            communicatie.Students.Add(said);
-            programmeren.Students.Add(mieke);
-            programmeren.Students.Add(said);
-            webtechnologie.Students.Add(said);
-            databanken.Students.Add(mieke);
+            Student said = new Student("Said Aziz", new DateTime(2000, 06, 01));
+            Student mieke = new Student("Mieke Vermeulen", new DateTime(1998, 01, 01));
+            List<Student> studenten = new List<Student>() { said, mieke };
+            Course databanken = new Course("Databanken");
+            Course programmeren = new Course("Programmeren", studenten, 3);
+            Course webtechnologie = new Course("Webtechnologie");
+            Course communicatie = new Course("Communicatie", studenten, 6);
 
-            communicatie.ShowOverview();
+            databanken.Students.Add(mieke);
+            webtechnologie.Students.Add(said);
+
+            said.RegisterCourseResult(communicatie, 12);
+            said.RegisterCourseResult(programmeren, null);
+            said.RegisterCourseResult(webtechnologie, 13);
+
+            mieke.RegisterCourseResult(communicatie, 13);
+            mieke.RegisterCourseResult(programmeren, 16);
+            mieke.RegisterCourseResult(databanken, 14);
+            databanken.ShowOverview();
             programmeren.ShowOverview();
             webtechnologie.ShowOverview();
-            databanken.ShowOverview();
+            communicatie.ShowOverview();
         }
-        static void Main(string[] args)
+        public static void DemoAdministrativePersonnel()
         {
-
-            Console.WriteLine("Wat wil je doen?" +
-                "\n1. Demonstreerstudenten uitvoeren" +
-                "\n2. DemonstreerCursussen uitvoeren");
-            int number = Convert.ToInt32(Console.ReadLine());
-            switch (number)
+            var taken = new Dictionary<string, byte>();
+            taken.Add("roostering", 10);
+            taken.Add("correspondentie", 10);
+            taken.Add("animatie", 10);
+            AdministrativePersonnel ahmed = new AdministrativePersonnel("Ahmed Azzaoui", new DateTime(1988, 2, 4), taken);
+            ahmed.Seniority = 4;
+            foreach (var personeel in AdministrativePersonnel.AllAdministrativePersonnel)
             {
-                case 1:
-                    DemoStudents();
-                    break;
-                case 2:
-                    DemoCourses();
-                    break;
-                default:
-                    break;
+                Console.WriteLine(personeel.GenerateNameCard());
+            }
+            Console.WriteLine(ahmed.CalculateSalary());
+            Console.WriteLine(ahmed.DetermineWorkLoad());
+
+        }
+        public static void DemoLecturers()
+        {
+            var tasks = new Dictionary<string, byte>();
+            var economie = new Course("Economie");
+            var statistiek = new Course("Statistiek");
+            var analytischeMeetkunde = new Course("Analytische meetkunde");
+            var anna = new Lecturer("Anna Bolzano", new DateTime(1975, 6, 12), tasks);
+            anna.Courses.Add(economie, 3);
+            anna.Courses.Add(statistiek, 3);
+            anna.Courses.Add(analytischeMeetkunde, 4);
+            anna.Seniority = 9;
+            foreach (var personeel in Lecturer.AllLecturers)
+            {
+                Console.WriteLine(personeel.GenerateNameCard());
+            }
+            Console.WriteLine(anna.CalculateSalary());
+            Console.WriteLine(anna.DetermineWorkLoad());
+        }
+        public static void DemoStudyProgram()
+        {/*
+            Course communicatie = new Course("Communicatie");
+            Course programmeren = new Course("Programmeren");
+            Course databanken = new Course("Databanken");
+            List<Course> courses = new List<Course>() { communicatie, programmeren, databanken };
+            StudyProgram programmerenProgram = new StudyProgram("Programmeren");
+            StudyProgram snbProgram = new StudyProgram("Systeem- en netwerkbeheer");
+            programmerenProgram.Courses = courses;
+            snbProgram.Courses = courses;
+            programmerenProgram.ShowOverview();
+            snbProgram.ShowOverview();
+        }*/
+            static void Main(string[] args)
+            {
+
+                do
+                {
+                    Console.WriteLine("Maak een keuze:" +
+                        "\n1.Demostudents" +
+                        "\n2 DemoCourse" +
+                        "\n4 DemonstreerStudieProgramma uitvoeren");
+                    int usermenuChoice = Convert.ToInt32(Console.ReadLine());
+                    switch (usermenuChoice)
+                    {
+                        case 1:
+                            DemoStudents();
+                            break;
+                        case 2:
+                            DemoCourses();
+                            break;
+                        case 4:
+                            DemoStudyProgram();
+                            break;
+                        case 5:
+                            DemoAdministrativePersonnel();
+                            break;
+                        case 6:
+                            DemoLecturers();
+                            break;
+
+                    }
+                } while (true);
+
             }
         }
-
     }
 }
