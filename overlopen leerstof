@@ -1,0 +1,75 @@
+dayOfTheWeek
+Console.WriteLine($"{datum.ToString("d MMMM yyyy",belgianCI)} is een {datum.ToString("dddd")}");
+phonebook[name] = number
+hasset<t>
+Geneste dictionary
+var phonebook = new Dictionary
+Math.Ceiling();
+Math.Max();
+choice = int.Parse(Console.ReadLine());
+:base
+computed property.
+oefenigen postoffice inheriteance
+PhoneBookWithBuilder();
+/*
+public static void ReadTextFormatStudent()
+{/*
+    Console.WriteLine("Geef de tekstvoorstelling van 1 student in csv-formaat:");
+    string csv = Console.ReadLine();
+    string[] data = csv.Split(";");
+    int day = Convert.ToInt32(data[1]);
+    int month = Convert.ToInt32(data[2]);
+    int year = Convert.ToInt32(data[3]);
+    Student newStudent = new Student(data[0], new DateTime(year, month, day));
+    for (int i = 4; i < data.Length; i += 2)
+    {
+        int subjectID = Convert.ToInt32(data[i]);
+        Course subject = Course.SearchCourseById(subjectID);
+        if (!(subject is null))
+        {
+            byte result = Convert.ToByte(data[i + 1]);
+            newStudent.RegisterCourseResult(subject, result);
+        }
+    }
+    newStudent.ShowOverview();
+    */
+    /*
+    Console.WriteLine("Geef de tekstvoorstelling van 1 student in csv-formaat:");
+    string csv = Console.ReadLine();
+    string[] data = csv.Split(";");
+    */
+    string csv = ">Bart Van Steen;04;03;1998;Boekhouden;14;Macro-economie;8;Frans, deel 2;18";
+    string[] csvSplit = csv.Split(";");
+    string name = csvSplit[0];
+    Console.WriteLine(name);
+    int day = Convert.ToInt32(csvSplit[1]);
+    int month = Convert.ToInt32(csvSplit[2]);
+    int year = Convert.ToInt32(csvSplit[3]);
+    DateTime birthDate = new DateTime(year,month,day);
+    
+    Student bart = new Student(name,birthDate);
+
+
+    for (int i = 4; i < csvSplit.Length; i += 2)
+    {
+        int subjectID = Convert.ToInt32(csvSplit[i]);
+        Course subject = Course.SearchCourseById(subjectID);
+        if (!(subject is null))
+        {
+            byte result = Convert.ToByte(csvSplit[i + 1]);
+            bart.RegisterCourseResult(subject, result);
+        }
+    }
+
+    bart.ShowOverview();
+
+}
+  
+    
+}
+
+
+
+
+
+
