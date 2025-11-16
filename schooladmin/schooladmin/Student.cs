@@ -82,7 +82,7 @@ namespace SchoolAdmin
                 lines = lines + "*";
             }
             Console.WriteLine($"{GenerateNameCard()}({Age})");
-            Console.WriteLine($"Werkbelasting {DetermineWorkload()}" +
+            Console.WriteLine($"Werkbelasting {DetermineWorkLoad()}" +
                 $"\n{cijferrapport}" +
                 $"\n{lines}");
             foreach (CourseResistration cr in courseRegistrations)

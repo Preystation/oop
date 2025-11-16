@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
@@ -12,88 +13,85 @@ namespace OOexcercises
     {
         public static void PhoneBookNumber()
         {
-            int counter = 0;
-            string respond = "";
-            Dictionary<string, string> phonebook = new Dictionary<string, string>();
+            Dictionary<string,string> phonebook = new Dictionary<string, string>();
+            string answer = "";
+            Console.WriteLine("Wil je een naam en nummer inlezen?");
+            answer = Console.ReadLine().ToLower().Trim();
             do
             {
-                if (counter == 0) { 
-                Console.WriteLine("Wil je een naam en een nummer inlezen?");
-                    respond = Console.ReadLine().ToLower();
-                    counter++;
-                }
                
-                if (respond =="ja")
+                Console.WriteLine("Naam?");
+                string name = Console.ReadLine();
+                Console.WriteLine("Nummer?");
+                string number = Console.ReadLine();
+                if (phonebook.ContainsKey(name))
                 {
-                    
-                    Console.WriteLine("Naam?");
-                    string name = Console.ReadLine();
-                    Console.WriteLine("Nummer?");
-                    string number = Console.ReadLine();
-                    if (!(phonebook.ContainsKey(name)))
-                    {
-                        phonebook.Add(name, number);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Fout");
-                    }
-                    
-                     Console.WriteLine("Wil je (nog) een naam en een nummer inlezen?");
-                    respond = Console.ReadLine().ToLower();
+                    phonebook[name] = number;
                 }
-                
-            } while (!(respond=="nee"));
-            foreach(var item in phonebook)
+                else
+                {
+                    phonebook.Add(name, number);
+                }
+                Console.WriteLine("Wil je (nog) een naam en nummer inlezen?");
+                answer = Console.ReadLine().ToLower().Trim();
+
+
+            } while (answer=="ja".ToLower().Trim());
+            foreach(var ph in phonebook)
             {
-                Console.WriteLine($"{item.Key}\t{item.Value}");
+                Console.WriteLine($"{ph.Key} {ph.Value}");
             }
-        }public static void PhoneBookCityNameNumber()
+        }
+        public static void PhoneBookCityNameNumber()
         {
-            string respond = "";
+            Console.WriteLine("Wil je een gemeente, naam en nummer inlezen?");
             Dictionary<string, Dictionary<string, string>> phonebook = new Dictionary<string, Dictionary<string, string>>();
-            bool keepRunning = true;
-            Console.WriteLine("Wil je een gemeente,naam en nummer inlezen?");
-            while (keepRunning)
+            string respond = Console.ReadLine();
+            while(respond.ToLower().Trim() == "ja")
             {
+                Console.WriteLine("Gemeente?");
+                string gemeente = Console.ReadLine();
+                Console.WriteLine("Naam?");
+                string name = Console.ReadLine();
+                Console.WriteLine("Nummer?");
+                string number = Console.ReadLine();
+                if (phonebook.ContainsKey(gemeente))
+                {
+                    phonebook[gemeente].Add(name, number);
+                }
+                else
+                {
+                    phonebook.Add(gemeente, new Dictionary<string, string>());
+                    phonebook[gemeente].Add(name, number);
+                }
+                Console.WriteLine("Wil je nog een gemeente,naam en nummer inlezen?");
                 respond = Console.ReadLine();
-                if (respond=="nee")
-                {
-                    keepRunning = false;
-                }
-                if (respond == "ja" || respond == "")
-                {
-                    Console.WriteLine("Gemeente?");
-                    string gemeente = Console.ReadLine();
-                    Console.WriteLine("Naam?");
-                    string name = Console.ReadLine();
-                    Console.WriteLine("Nummer");
-                    string number = Console.ReadLine();
-                    if (!(phonebook.ContainsKey(gemeente))){
-                        phonebook.Add(gemeente, new Dictionary<string, string>());
-                    }
-                    else
-                    {
-                        Console.WriteLine("Fout");
-                    }
-                        phonebook[gemeente].Add(name, number);
-                    
-                }
-                Console.WriteLine("Wil je (nog) een gemeente,naam en nummer inlezen?");
             }
-            foreach(var gemeente in phonebook)
+            foreach (var gemeente in phonebook)
             {
-                Console.WriteLine($"Gemeente {gemeente.Key}");
-                foreach(var entry in gemeente.Value)
+                Console.WriteLine($"Gemeente:{gemeente.Key}");
+                foreach (var personen in gemeente.Value)
                 {
-                    Console.WriteLine($"{entry.Key} {entry.Value}");
+                    Console.WriteLine($"{personen.Key} {personen.Value}");
                 }
             }
             
+
         }
         public static void H13_PhoneBookWithBuilder()
         {
-
+            var builder = ImmutableDictionary.CreateBuilder<string, string>();
+            string respond = Console.ReadLine();
+            while (respond == "ja")
+            {
+                Console.WriteLine("Naam?");
+                string name = Console.ReadLine();
+                Console.WriteLine("Nummer?");
+                string number = Console.ReadLine();
+                builder[name] = number;
+                var phonebook = builder.ToImmutableDictionary<string, string>();
+            }
+        
         }
         public static void Submenu()
         {
@@ -114,7 +112,7 @@ namespace OOexcercises
                     PhoneBookCityNameNumber();
                     break;
                 case 3:
-                   // PhoneBookWithBuilder();
+                    H13_PhoneBookWithBuilder();
                     break;
                 case 4:
                     break;

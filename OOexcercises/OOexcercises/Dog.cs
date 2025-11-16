@@ -6,8 +6,5 @@ using System.Threading.Tasks;
 
 namespace OOexcercises
 {
-    internal class Dog:Animal
-    {
-        public List<string> IndividualAllergies
-    }
+   
 }

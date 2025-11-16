@@ -4,7 +4,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/*
 namespace OOexcercises
 {
     internal abstract class Animal
@@ -48,3 +48,4 @@ namespace OOexcercises
        // abstract public  void ShowChip() { }
     }
 }
+*/

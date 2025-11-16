@@ -99,8 +99,9 @@
             snbProgram.Courses = courses;
             programmerenProgram.ShowOverview();
             snbProgram.ShowOverview();
-        }*/
-            static void Main(string[] args)
+        */
+        }
+        static void Main(string[] args)
             {
 
                 do
@@ -134,4 +135,3 @@
             }
         }
     }
-}
