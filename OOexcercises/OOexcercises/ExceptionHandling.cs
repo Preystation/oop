@@ -138,7 +138,7 @@ namespace OOexcercises
                     if (ac > 30)
                     {
                         throw new ArgumentException("Het is niet gelukt :-(");
-                    ageCats.Clear();
+                  
                     }
                    
                 }

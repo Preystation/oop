@@ -13,7 +13,8 @@ namespace OOexcercises
                 "\n1.DateTime" +
                 "\n2.Classes and objects" +
                 "\n3.Datastructuren" +
-                "\n5.exceptions");
+                "\n5.exceptions" +
+                "\n6.Polymorfisme");
 
             int userChoice = Convert.ToInt32(Console.ReadLine());
             switch (userChoice)
@@ -33,7 +34,9 @@ namespace OOexcercises
                 case 5:
                     ExceptionHandling.ShowSubmenu();
                     break;
-
+                case 6:
+                    Polymorfisme.ToonSubmenu();
+                    break;
             }
         }
     }
